@@ -1,0 +1,11 @@
+html {
+    background-color: #eee;
+}
+
+.margined {
+	margin: 10px 10px 10px 10px;
+}
+
+.trebucheted{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
