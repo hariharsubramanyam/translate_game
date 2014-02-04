@@ -2,6 +2,17 @@ html {
     background-color: #eee;
 }
 
+.three-col {
+	-moz-column-count: 3;
+	-moz-column-gap: 5px;
+	-webkit-column-count: 3;
+	-webkit-column-gap: 5px;
+	-ms-column-count: 3;
+	-ms-column-gap: 5px;
+	column-count: 3;
+	column-gap: 5px;
+}
+
 .margined {
 	margin: 10px 10px 10px 10px;
 }
