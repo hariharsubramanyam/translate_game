@@ -13,6 +13,11 @@ ul{
 	text-decoration: line-through;
 }
 
+.title{
+	font-size: 2em;
+	margin: 10px 10px 10px 50px;
+}
+
 .red{
 	color: red;
 }
@@ -25,16 +30,17 @@ ul{
 	color: gray;
 }
 
-*{
-	text-align: left;
-}
-
 .black{
 	color: black;
 }
 
-.margined {
+.element {
 	margin: 10px 10px 10px 10px;
+	font-size: 1.5em;
+}
+
+h2{
+	font-size: 1em;
 }
 
 .trebucheted{
