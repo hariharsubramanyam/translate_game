@@ -1,17 +1,17 @@
 // This allows the Javascript code inside this block to only run when the page
 // has finished loading in the browser.
 var current_dict;
-
+var autocomplete_source = [];
+var selected_word;
 $(function() {
 	var lang_to = "English";
 	var lang_from = "Spanish";
 	current_dict = set_languages(lang_to, lang_from); // keys: words in @lang_to, values: corresponding words in @lang_from 	
-	var selected_word = random_word(current_dict);
-	set_word_to_translate(selected_word)
+	selected_word = random_word(current_dict);
+	set_word_to_translate(current_dict[selected_word]);
 	focus_on_input_box();
 	set_button_handler();
-
-	
+	set_autocomplete();
 });
 
 function random_word(dict){
@@ -19,11 +19,29 @@ function random_word(dict){
 	var c = 0;
 	for(var word in dict){
 		if(c == index){
-			console.log(current_dict[word]);
+			console.log(word);
 			return word;
 		}
 		c++;
 	}
+}
+
+function set_autocomplete(){
+	for(var i in current_dict){
+		autocomplete_source.push(i);
+	}
+	$("#txtAnswer").autocomplete({
+		source:autocomplete_source,
+		select:function(event, ui){
+			var question = $("#lblTranslateMe").html();
+			$("#txtAnswer").text("");
+			var user_answer = ui.item.value;
+			console.log(ui.item.value);
+			var correct_answer = selected_word;
+			validate(question, user_answer, correct_answer);
+			event.preventDefault();
+		}
+	});
 }
 
 function add_correct_response(question, answer){
@@ -42,16 +60,22 @@ function set_button_handler(){
 	$("#btnAnswer").click(function(){
 		var question = $("#lblTranslateMe").html();
 		var user_answer = $("#txtAnswer").val();
-		var correct_answer = current_dict[question];
-		if(user_answer == correct_answer){
-			add_correct_response(question, user_answer);
-		}else{
-			add_incorrect_response(question, user_answer, correct_answer);
-		}
-		clear_input_box();
-		focus_on_input_box();
-		set_word_to_translate(random_word(current_dict));
+		var correct_answer = selected_word;
+		validate(question, user_answer, correct_answer);
 	});
+}
+
+function validate(question, user_answer, correct_answer){
+	if(user_answer == correct_answer){
+		add_correct_response(question, user_answer);
+	}else{
+		add_incorrect_response(question, user_answer, correct_answer);
+	}
+	clear_input_box();
+	focus_on_input_box();
+	selected_word = random_word(current_dict);
+	set_word_to_translate(current_dict[selected_word]);
+
 }
 
 function clear_input_box(){
