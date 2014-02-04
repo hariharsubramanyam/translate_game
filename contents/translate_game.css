@@ -1,16 +1,36 @@
 html {
     background-color: #eee;
 }
+ul{
+	list-style-type: none;
+}
+.col-third {
+	float: left;
+	width: 33%;
+}
 
-.three-col {
-	-moz-column-count: 3;
-	-moz-column-gap: 5px;
-	-webkit-column-count: 3;
-	-webkit-column-gap: 5px;
-	-ms-column-count: 3;
-	-ms-column-gap: 5px;
-	column-count: 3;
-	column-gap: 5px;
+.struck{
+	text-decoration: line-through;
+}
+
+.red{
+	color: red;
+}
+
+.blue{
+	color: blue;
+}
+
+.gray{
+	color: gray;
+}
+
+*{
+	text-align: left;
+}
+
+.black{
+	color: black;
 }
 
 .margined {
