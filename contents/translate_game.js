@@ -36,10 +36,15 @@ function set_autocomplete(){
 			var question = $("#lblTranslateMe").html();
 			$("#txtAnswer").text("");
 			var user_answer = ui.item.value;
-			console.log(ui.item.value);
 			var correct_answer = selected_word;
 			validate(question, user_answer, correct_answer);
 			event.preventDefault();
+		}
+	});
+	$('#txtAnswer').keypress(function (e) {
+		if (e.which == 13) {
+			$("#btnAnswer").click();
+			$("#txtAnswer").autocomplete("close");
 		}
 	});
 }
@@ -62,6 +67,7 @@ function set_button_handler(){
 		var user_answer = $("#txtAnswer").val();
 		var correct_answer = selected_word;
 		validate(question, user_answer, correct_answer);
+		$("#txtAnswer").autocomplete("close");
 	});
 }
 
