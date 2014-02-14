@@ -19,7 +19,8 @@ function random_word(dict){
 	var c = 0;
 	for(var word in dict){
 		if(c == index){
-			console.log(word);
+			// Uncomment the line below to display the word to the console (useful for debugging)
+			//console.log(word);
 			return word;
 		}
 		c++;
