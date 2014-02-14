@@ -40,7 +40,8 @@ function set_autocomplete(){
 			var correct_answer = selected_word;
 			validate(question, user_answer, correct_answer);
 			event.preventDefault();
-		}
+		},
+		minLength:3
 	});
 	$('#txtAnswer').keypress(function (e) {
 		if (e.which == 13) {
