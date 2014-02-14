@@ -56,6 +56,8 @@ function add_correct_response(question, answer){
 }
 
 function add_incorrect_response(question, incorrect_answer, correct_answer){
+	if(incorrect_answer.length == 0)
+		incorrect_answer = "NO RESPONSE";
 	$("#lstCol1 li:eq(1)").after($("<li class='red element'>"+question+"</li>"));
 	$("#lstCol2 li:eq(1)").after($("<li class='red element struck'>"+incorrect_answer+"</li>"));
 	$("#lstCol3 li:eq(1)").after($("<li class='red element'>"+correct_answer+"</li>"));
